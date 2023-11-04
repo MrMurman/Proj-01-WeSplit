@@ -37,15 +37,15 @@ struct ContentView: View {
     }
     
     var currencyString: String {
-        return Locale.current.currencyCode ?? "USD"
+        return Locale.current.currency?.identifier ?? "USD"
     }
     
     var body: some View {
         
-        NavigationView{
+        NavigationStack{
             Form {
                 Section {
-                    TextField("Amount", value: $checkAmount, format: .currency(code: Locale.current.currencyCode ?? "USD"))
+                    TextField("Amount", value: $checkAmount, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
                         .keyboardType(.decimalPad)
                         .focused($amountIsFocused)
                     
